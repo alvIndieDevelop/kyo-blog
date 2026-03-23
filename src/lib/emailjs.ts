@@ -1,8 +1,5 @@
 import emailjs from "@emailjs/browser";
-
-const EMAILJS_SERVICE_ID = "service_id";
-const EMAILJS_TEMPLATE_ID = "template_id";
-const EMAILJS_PUBLIC_KEY = "public_key";
+import options from "@/utils/config";
 
 export const sendEmail = async (data: {
   name: string;
@@ -11,14 +8,14 @@ export const sendEmail = async (data: {
 }) => {
   try {
     const response = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
+      options.EMAILJS.SERVICE_ID,
+      options.EMAILJS.TEMPLATE_ID,
       {
         from_name: data.name,
         from_email: data.email,
         message: data.message,
       },
-      EMAILJS_PUBLIC_KEY
+      options.EMAILJS.PUBLIC_KEY
     );
     return { success: true, data: response };
   } catch (error) {

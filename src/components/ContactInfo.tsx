@@ -1,38 +1,57 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
-const contactDetails = [
+const items = [
   {
     icon: MapPin,
-    title: "Office Location",
-    details: ["123 Therapy St", "New York, NY 10001"],
+    label: "Ubicación",
+    content: "Consultorios Royal Center\nMarbella, Ciudad de Panamá",
   },
   {
     icon: Phone,
-    title: "Phone",
-    details: ["(555) 123-4567"],
+    label: "Teléfono",
+    content: "(+507) 6433-3779",
+    href: "tel:+50764333779",
   },
   {
     icon: Mail,
-    title: "Email",
-    details: ["contact@drjohnson.com"],
+    label: "Correo Electrónico",
+    content: "psi.kyosainieves@gmail.com",
+    href: "mailto:psi.kyosainieves@gmail.com",
+  },
+  {
+    icon: Clock,
+    label: "Horario de Atención",
+    content: "Lunes a Viernes: 8:00 AM – 5:00 PM\nSábados: Con cita previa",
   },
 ];
 
 export default function ContactInfo() {
   return (
     <div className="space-y-6">
-      {contactDetails.map((item) => (
-        <div key={item.title} className="flex items-start space-x-4">
-          <div className="bg-blue-500 dark:bg-blue-600 rounded-lg p-3">
-            <item.icon className="h-6 w-6 text-white" />
+      {items.map((item) => (
+        <div
+          key={item.label}
+          className="flex items-start gap-4 bg-gray-50 dark:bg-gray-900 rounded-2xl p-5 border border-gray-100 dark:border-gray-800"
+        >
+          <div className="w-10 h-10 bg-teal-50 dark:bg-teal-950 rounded-xl flex items-center justify-center flex-shrink-0">
+            <item.icon className="w-5 h-5 text-teal-600 dark:text-teal-400" />
           </div>
           <div>
-            <h3 className="font-medium text-white mb-1">{item.title}</h3>
-            {item.details.map((detail, index) => (
-              <p key={index} className="text-blue-100">
-                {detail}
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+              {item.label}
+            </h3>
+            {item.href ? (
+              <a
+                href={item.href}
+                className="text-sm text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition"
+              >
+                {item.content}
+              </a>
+            ) : (
+              <p className="text-sm text-gray-500 dark:text-gray-400 whitespace-pre-line">
+                {item.content}
               </p>
-            ))}
+            )}
           </div>
         </div>
       ))}

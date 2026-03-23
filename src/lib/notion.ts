@@ -1,6 +1,5 @@
 import { Client } from "@notionhq/client";
 import { BlogPost, PostPage } from "@/types/notion.schema";
-import { readableDate } from "./utils";
 import { NotionToMarkdown } from "notion-to-md";
 
 import options from "@/utils/config";
@@ -97,7 +96,7 @@ export default class NotionService {
     if (cover !== null) {
       switch (cover.type) {
         case "file":
-          cover = page.cover.file;
+          cover = page.cover.file.url;
           break;
         case "external":
           cover = page.cover.external.url;
@@ -116,7 +115,7 @@ export default class NotionService {
       title: page.properties.Name.title[0].plain_text,
       tags: page.properties.Tags.multi_select,
       description: page.properties.Description.rich_text[0].plain_text,
-      date: readableDate(page.properties.CreatedAt.created_time),
+      date: page.properties.CreatedAt.created_time,
       slug: page.properties.Slug.formula.string,
     };
 

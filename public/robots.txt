@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Host
+Host: https://psikyo.com
+
+# Sitemaps
+Sitemap: https://psikyo.com/sitemap.xml

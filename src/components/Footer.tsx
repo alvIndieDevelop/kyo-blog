@@ -1,88 +1,126 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
+import options from "@/utils/config";
 
-const Footer = () => {
+const WHATSAPP_NUMBER = options.WHATSAPP.NUMBER;
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  options.WHATSAPP.DEFAULT_MESSAGE
+);
+
+export default function Footer() {
   return (
-    <footer className="bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Dr. Sarah Johnson</h3>
-            <p className="text-gray-600">
-              Psicóloga profesional especializada en salud mental, desarrollo
-              personal y psicoterapia para adolescentes y adultos.
+    <footer className="bg-gray-900 dark:bg-gray-950 text-gray-400 py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">KN</span>
+              </div>
+              <div>
+                <span className="font-semibold text-white text-sm">
+                  Kyo-Sai Nieves
+                </span>
+                <span className="block text-xs text-gray-500">
+                  Psicóloga Clínica
+                </span>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed max-w-sm mt-4">
+              Acompañamiento emocional y psicológico personalizado. El don de
+              fluir hacia una vida plena. 🌿
             </p>
+
+            {/* Social links */}
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href="https://www.instagram.com/psi.kyosainieves/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 bg-gray-800 hover:bg-teal-600 rounded-full flex items-center justify-center transition"
+              >
+                <Instagram className="w-4 h-4 text-gray-300" />
+              </a>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-9 h-9 bg-gray-800 hover:bg-[#25D366] rounded-full flex items-center justify-center transition"
+              >
+                <MessageCircle className="w-4 h-4 text-gray-300" />
+              </a>
+            </div>
           </div>
+
+          {/* Navigation */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h4 className="text-white text-sm font-semibold mb-4">
+              Navegación
+            </h4>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link
-                  href="/about"
-                  className="text-gray-600 hover:text-gray-900"
-                >
+                <Link href="/" className="hover:text-teal-400 transition">
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-teal-400 transition">
                   Acerca de
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 hover:text-gray-900"
-                >
+                <Link href="/blog" className="hover:text-teal-400 transition">
                   Blog
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  href="/portfolio"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Portfolio
-                </Link>
-              </li> */}
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-600 hover:text-gray-900"
+                  className="hover:text-teal-400 transition"
                 >
-                  Contactos
+                  Contacto
                 </Link>
               </li>
             </ul>
           </div>
+
+          {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">
-              Informacion de contactos
-            </h3>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-2">
-                <Mail size={18} className="text-gray-600" />
-                <span className="text-gray-600">
+            <h4 className="text-white text-sm font-semibold mb-4">Contacto</h4>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a
+                  href="mailto:psi.kyosainieves@gmail.com"
+                  className="hover:text-teal-400 transition"
+                >
                   psi.kyosainieves@gmail.com
-                </span>
+                </a>
               </li>
-              <li className="flex items-center space-x-2">
-                <Phone size={18} className="text-gray-600" />
-                <span className="text-gray-600">(+507) 6433-3779</span>
+              <li>
+                <a
+                  href="tel:+50764333779"
+                  className="hover:text-teal-400 transition"
+                >
+                  (+507) 6433-3779
+                </a>
               </li>
-              <li className="flex items-center space-x-2">
-                <MapPin size={18} className="text-gray-600" />
-                <span className="text-gray-600">
-                  Consultorios Royal Center, Marbella, Panama City, Panama
-                </span>
+              <li>
+                Royal Center, Marbella
+                <br />
+                Ciudad de Panamá
               </li>
             </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-center text-gray-600">
-            © {new Date().getFullYear()} Psi. Kyo-Sai Nieves. Derechos
-            reservados.
-          </p>
+
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-600">
+          © {new Date().getFullYear()} Kyo-Sai Nieves. Todos los derechos
+          reservados.
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

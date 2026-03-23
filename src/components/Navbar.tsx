@@ -1,105 +1,104 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
-const Navbar = () => {
+const navLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/about", label: "Acerca de" },
+  { href: "/blog", label: "Blog" },
+];
+
+export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className="text-xl font-semibold text-gray-900 dark:text-white"
-            >
-              Psi. Kyo-Sai Nieves
-            </Link>
+    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-sm">KN</span>
           </div>
+          <div>
+            <span className="font-semibold text-gray-900 dark:text-white text-sm">
+              Kyo-Sai Nieves
+            </span>
+            <span className="block text-[11px] text-teal-600 dark:text-teal-400 font-medium tracking-wide">
+              Psicóloga Clínica
+            </span>
+          </div>
+        </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
             <Link
-              href="/"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              key={link.href}
+              href={link.href}
+              className={`text-sm font-medium transition ${
+                router.pathname === link.href
+                  ? "text-teal-600 dark:text-teal-400"
+                  : "text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400"
+              }`}
             >
-              Home
+              {link.label}
             </Link>
-            <Link
-              href="/about"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-            >
-              Acerca de
-            </Link>
-            <Link
-              href="/blog"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/contact"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-            >
-              Contactos
-            </Link>
-            <ThemeToggle />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          ))}
+          <Link
+            href="/contact"
+            className={`text-sm font-medium px-5 py-2 rounded-full transition ${
+              router.pathname === "/contact"
+                ? "bg-teal-600 text-white"
+                : "text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950 hover:bg-teal-100 dark:hover:bg-teal-900"
+            }`}
+          >
+            Contacto
+          </Link>
+          <ThemeToggle />
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link
-                href="/"
-                className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="/blog"
-                className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsOpen(false)}
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        )}
+        {/* Mobile toggle */}
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400"
+            aria-label="Menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950 px-6 py-4 space-y-3">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`block text-sm font-medium py-2 transition ${
+                router.pathname === link.href
+                  ? "text-teal-600 dark:text-teal-400"
+                  : "text-gray-600 dark:text-gray-400"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+            className="block text-sm font-medium text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950 px-4 py-2.5 rounded-full text-center"
+          >
+            Contacto
+          </Link>
+        </div>
+      )}
     </nav>
   );
-};
-
-export default Navbar;
+}

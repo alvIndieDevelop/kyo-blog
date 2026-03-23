@@ -15,10 +15,8 @@ export default function Blog({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  // obtener las categorias unicas de los posts.
   const uniqueCategories = [
     ...Array.from(
       new Set(
@@ -33,7 +31,7 @@ export default function Blog({
         ? prev.filter((selectedTag) => selectedTag !== tag)
         : [...prev, tag]
     );
-    setCurrentPage(1); // Reset to first page when selecting a tag
+    setCurrentPage(1);
   };
 
   const filteredPosts = posts.filter((post: BlogPost) => {
@@ -59,80 +57,86 @@ export default function Blog({
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
-    setCurrentPage(1); // Reset to first page when searching
+    setCurrentPage(1);
   };
 
   return (
     <>
       <Head>
-        <title>Blog!</title>
+        <title>Blog | Psi. Kyo-Sai Nieves</title>
         <meta
-          name={"description"}
-          title={"description"}
-          content={"Lista de mis articulos"}
+          name="description"
+          content="Artículos sobre psicología, bienestar emocional y salud mental por Psi. Kyo-Sai Nieves."
         />
-        <meta name={"og:title"} title={"og:title"} content={"Blog!"} />
+        <meta property="og:title" content="Blog | Psi. Kyo-Sai Nieves" />
         <meta
-          name={"og:description"}
-          title={"og:description"}
-          content={"Lista de mis articulos"}
+          property="og:description"
+          content="Artículos sobre psicología, bienestar emocional y salud mental."
         />
       </Head>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-          <h1 className="text-4xl font-bold mb-4 md:mb-0 dark:text-white">
-            Articles & Work
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 tracking-widest uppercase">
+            Blog
+          </span>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-3 mb-4">
+            Artículos & Reflexiones
           </h1>
-
-          {/* Search Bar */}
-          <div className="relative w-full md:w-96">
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchQuery}
-              onChange={handleSearch}
-              className="w-full px-4 py-2 pl-10 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
-            />
-            <Search
-              className="absolute left-3 top-2.5 text-gray-400"
-              size={20}
-            />
-          </div>
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl">
+            Exploraciones sobre psicología, bienestar emocional y herramientas
+            para una vida más plena.
+          </p>
         </div>
 
-        {/* Tag Filter */}
-        <div className="mb-8">
-          <TagFilter
-            tags={uniqueCategories as string[]}
-            selectedTags={selectedTags}
-            onTagSelect={handleTagSelect}
-          />
+        {/* Search & Filters */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+          <div className="relative w-full md:w-80">
+            <input
+              type="text"
+              placeholder="Buscar artículos..."
+              value={searchQuery}
+              onChange={handleSearch}
+              className="w-full px-4 py-2.5 pl-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-teal-400 dark:focus:border-teal-600 transition"
+            />
+            <Search
+              className="absolute left-3.5 top-3 text-gray-400 dark:text-gray-600"
+              size={16}
+            />
+          </div>
+
+          {uniqueCategories.length > 0 && (
+            <TagFilter
+              tags={uniqueCategories as string[]}
+              selectedTags={selectedTags}
+              onTagSelect={handleTagSelect}
+            />
+          )}
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedPosts.map((post: BlogPost) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
+        {paginatedPosts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {paginatedPosts.map((post: BlogPost) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            <p className="text-gray-400 dark:text-gray-600">
+              No se encontraron artículos con los filtros seleccionados.
+            </p>
+          </div>
+        )}
 
-        {/* Show pagination only if there are multiple pages */}
+        {/* Pagination */}
         {totalPages > 1 && (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={setCurrentPage}
           />
-        )}
-
-        {/* No results message */}
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600 dark:text-gray-400">
-              No articles found matching your search.
-            </p>
-          </div>
         )}
       </div>
     </>
@@ -146,7 +150,7 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     posts = await notionServices.getPublishedBlogPosts();
   } catch (error) {
-    console.error("ERROR:", error);
+    console.error("Error fetching blog posts:", error);
     posts = [];
   }
 

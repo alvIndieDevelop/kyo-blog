@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,9 +7,13 @@ import { sendEmail } from "../lib/emailjs";
 import { useToast } from "../hooks/use-toast";
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
+  email: z
+    .string()
+    .email("Por favor ingresa un correo electrónico válido"),
+  message: z
+    .string()
+    .min(10, "El mensaje debe tener al menos 10 caracteres"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -37,8 +39,9 @@ export default function ContactForm() {
       );
       if (result.success) {
         toast({
-          title: "Message sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
+          title: "¡Mensaje enviado!",
+          description:
+            "Gracias por tu mensaje. Te responderé lo antes posible.",
         });
         reset();
       } else {
@@ -47,7 +50,8 @@ export default function ContactForm() {
     } catch {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again later.",
+        description:
+          "No se pudo enviar el mensaje. Por favor intenta de nuevo más tarde.",
         variant: "destructive",
       });
     } finally {
@@ -56,65 +60,61 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
         >
-          Name
+          Nombre
         </label>
         <input
           type="text"
           id="name"
           {...register("name")}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
-          placeholder="Your name"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-400 dark:focus:border-teal-600 transition"
+          placeholder="Tu nombre"
         />
         {errors.name && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-            {errors.name.message}
-          </p>
+          <p className="mt-1.5 text-xs text-red-500">{errors.name.message}</p>
         )}
       </div>
 
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
         >
-          Email
+          Correo Electrónico
         </label>
         <input
           type="email"
           id="email"
           {...register("email")}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors"
-          placeholder="your.email@example.com"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-400 dark:focus:border-teal-600 transition"
+          placeholder="tu.correo@ejemplo.com"
         />
         {errors.email && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-            {errors.email.message}
-          </p>
+          <p className="mt-1.5 text-xs text-red-500">{errors.email.message}</p>
         )}
       </div>
 
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
         >
-          Message
+          Mensaje
         </label>
         <textarea
           id="message"
           rows={5}
           {...register("message")}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors resize-none"
-          placeholder="How can I help you?"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-400 dark:focus:border-teal-600 transition resize-none"
+          placeholder="¿En qué puedo ayudarte?"
         />
         {errors.message && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+          <p className="mt-1.5 text-xs text-red-500">
             {errors.message.message}
           </p>
         )}
@@ -123,17 +123,17 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:focus:ring-offset-gray-900"
+        className="w-full inline-flex items-center justify-center px-8 py-3.5 bg-teal-600 text-white text-sm font-semibold rounded-full hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-lg shadow-teal-600/25"
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="animate-spin mr-2 h-5 w-5" />
-            Sending...
+            <Loader2 className="animate-spin mr-2 h-4 w-4" />
+            Enviando...
           </>
         ) : (
           <>
-            Send Message
-            <Send className="ml-2 h-5 w-5" />
+            Enviar Mensaje
+            <Send className="ml-2 h-4 w-4" />
           </>
         )}
       </button>

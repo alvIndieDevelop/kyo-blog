@@ -11,43 +11,40 @@ export default function Pagination({
   totalPages,
   onPageChange,
 }: PaginationProps) {
+  if (totalPages <= 1) return null;
+
   return (
-    <div className="flex items-center justify-center space-x-2 mt-8">
+    <div className="flex items-center justify-center gap-2 mt-12">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label="Previous page"
+        className="p-2 rounded-full text-gray-600 dark:text-gray-400 disabled:text-gray-300 dark:disabled:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        aria-label="Página anterior"
       >
-        <ChevronLeft className="h-5 w-5" />
+        <ChevronLeft size={18} />
       </button>
 
-      {[...Array(totalPages)].map((_, index) => {
-        const pageNumber = index + 1;
-        const isCurrentPage = pageNumber === currentPage;
-
-        return (
-          <button
-            key={pageNumber}
-            onClick={() => onPageChange(pageNumber)}
-            className={`px-4 py-2 rounded-md ${
-              isCurrentPage
-                ? "bg-blue-600 text-white"
-                : "hover:bg-gray-100 dark:hover:bg-gray-800"
-            }`}
-          >
-            {pageNumber}
-          </button>
-        );
-      })}
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+        <button
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`w-9 h-9 text-sm font-medium rounded-full transition ${
+            currentPage === page
+              ? "bg-teal-600 text-white"
+              : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+          }`}
+        >
+          {page}
+        </button>
+      ))}
 
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label="Next page"
+        className="p-2 rounded-full text-gray-600 dark:text-gray-400 disabled:text-gray-300 dark:disabled:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        aria-label="Página siguiente"
       >
-        <ChevronRight className="h-5 w-5" />
+        <ChevronRight size={18} />
       </button>
     </div>
   );

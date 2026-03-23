@@ -1,77 +1,85 @@
-import Image from "next/image";
+import Head from "next/head";
 import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
+import { MessageCircle } from "lucide-react";
+import options from "@/utils/config";
+
+const WHATSAPP_NUMBER = options.WHATSAPP.NUMBER;
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  options.WHATSAPP.DEFAULT_MESSAGE
+);
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <div className="relative h-[300px] mb-[-100px]">
-        <Image
-          src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?q=80&w=2071&auto=format&fit=crop"
-          alt="Contact header"
-          fill
-          className="object-cover"
+    <>
+      <Head>
+        <title>Contacto | Psi. Kyo-Sai Nieves</title>
+        <meta
+          name="description"
+          content="Agenda tu cita con Psi. Kyo-Sai Nieves. Consultas presenciales en Royal Center Marbella, Ciudad de Panamá, y sesiones online."
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-          <div className="text-white">
-            <h1 className="text-4xl font-bold mb-2">Contact Me</h1>
-            <p className="text-lg text-gray-200">
-              Let's start a conversation about your well-being
-            </p>
+      </Head>
+
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 tracking-widest uppercase">
+            Contacto
+          </span>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-3 mb-4">
+            Agenda tu cita
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl">
+            El primer paso hacia tu bienestar comienza aquí. Completa el
+            formulario o contáctame directamente.
+          </p>
+        </div>
+
+        {/* WhatsApp Card */}
+        <div className="mb-10">
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 bg-[#25D366]/10 dark:bg-[#25D366]/5 border border-[#25D366]/20 dark:border-[#25D366]/10 rounded-2xl p-5 hover:bg-[#25D366]/15 dark:hover:bg-[#25D366]/10 transition group"
+          >
+            <div className="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center flex-shrink-0">
+              <MessageCircle className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-0.5">
+                Escríbeme por WhatsApp
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                La forma más rápida de agendar tu cita. Respuesta en menos de 24
+                horas.
+              </p>
+            </div>
+            <span className="text-sm font-semibold text-[#25D366] group-hover:translate-x-1 transition-transform hidden sm:inline">
+              Abrir chat →
+            </span>
+          </a>
+        </div>
+
+        {/* Contact Grid */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Form */}
+          <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              Envíame un mensaje
+            </h2>
+            <ContactForm />
+          </div>
+
+          {/* Info */}
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              Información de contacto
+            </h2>
+            <ContactInfo />
           </div>
         </div>
       </div>
-
-      {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-          <div className="grid md:grid-cols-2">
-            {/* Contact Information */}
-            <div className="bg-blue-600 dark:bg-blue-700 p-8 lg:p-12">
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-semibold text-white mb-6">
-                    Get in Touch
-                  </h2>
-                  <p className="text-blue-100 mb-8">
-                    I'm here to help you on your journey to better mental
-                    health. Feel free to reach out with any questions.
-                  </p>
-                  <ContactInfo />
-                </div>
-
-                {/* Office Hours */}
-                <div>
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    Office Hours
-                  </h3>
-                  <div className="space-y-2 text-blue-100">
-                    <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                    <p>Saturday: 10:00 AM - 2:00 PM</p>
-                    <p>Sunday: Closed</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="p-8 lg:p-12">
-              <div>
-                <h2 className="text-2xl font-semibold mb-2 dark:text-white">
-                  Send a Message
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-8">
-                  Fill out the form below and I'll get back to you as soon as
-                  possible.
-                </p>
-                <ContactForm />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
