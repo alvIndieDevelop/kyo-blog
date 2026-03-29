@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { BlogPost } from "@/types/notion.schema";
-import BlogCard from "@/components/BlogCard";
-import Pagination from "@/components/Pagination";
-import TagFilter from "@/components/TagFilter";
+import {
+  BlogCard,
+  TagFilter,
+  Pagination,
+  NotionService,
+} from "@/features/blog";
+import type { BlogPost } from "@/features/blog";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
-import NotionService from "@/lib/notion";
 
 const POSTS_PER_PAGE = 6;
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BlogPost } from "@/types/notion.schema";
+import { BlogPost } from "../types/blog.types";
 
 interface BlogCardProps {
   post: BlogPost;

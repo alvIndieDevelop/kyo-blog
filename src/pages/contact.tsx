@@ -1,6 +1,5 @@
 import Head from "next/head";
-import ContactForm from "@/components/ContactForm";
-import ContactInfo from "@/components/ContactInfo";
+import { ContactForm, ContactInfo } from "@/features/contact";
 import { MessageCircle } from "lucide-react";
 import options from "@/utils/config";
 

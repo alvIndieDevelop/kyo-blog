@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client";
-import { BlogPost, PostPage } from "@/types/notion.schema";
+import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { BlogPost, PostPage } from "../types/blog.types";
 import { NotionToMarkdown } from "notion-to-md";
 
 import options from "@/utils/config";
@@ -36,9 +37,9 @@ export default class NotionService {
           },
         ],
       });
-      return response.results.map((res) => {
-        return NotionService.pageToPostTransformer(res);
-      });
+      return response.results
+        .filter((res): res is PageObjectResponse => "properties" in res)
+        .map((res) => NotionService.pageToPostTransformer(res));
     } catch (error) {
       throw new Error("Error fetching posts: " + error);
     }
@@ -69,12 +70,13 @@ export default class NotionService {
         ],
       });
 
-      if (!response.results[0]) {
+      const result = response.results[0];
+      if (!result || !("properties" in result)) {
         throw new Error("No results available");
       }
 
       // grab page from notion
-      const page = response.results[0];
+      const page = result as PageObjectResponse;
 
       const mdBlocks = await this.n2m.pageToMarkdown(page.id);
       markdown = this.n2m.toMarkdownString(mdBlocks);
@@ -89,36 +91,56 @@ export default class NotionService {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private static pageToPostTransformer(page: any): BlogPost {
-    let cover = page.cover;
+  private static pageToPostTransformer(page: PageObjectResponse): BlogPost {
+    let coverUrl = "";
+    const cover = page.cover;
 
-    if (cover !== null) {
+    if (cover) {
       switch (cover.type) {
         case "file":
-          cover = page.cover.file.url;
+          coverUrl = cover.file.url;
           break;
         case "external":
-          cover = page.cover.external.url;
+          coverUrl = cover.external.url;
           break;
-        default:
-          // Add default cover image if you want...
-          cover = "";
       }
-    } else {
-      cover = "";
     }
 
-    const content = {
-      id: page.id,
-      cover: cover,
-      title: page.properties.Name.title[0].plain_text,
-      tags: page.properties.Tags.multi_select,
-      description: page.properties.Description.rich_text[0].plain_text,
-      date: page.properties.CreatedAt.created_time,
-      slug: page.properties.Slug.formula.string,
-    };
+    const props = page.properties;
+    const nameProperty = props.Name;
+    const tagsProperty = props.Tags;
+    const descProperty = props.Description;
+    const dateProperty = props.CreatedAt;
+    const slugProperty = props.Slug;
 
-    return content;
+    return {
+      id: page.id,
+      cover: coverUrl,
+      title:
+        nameProperty?.type === "title"
+          ? (nameProperty.title[0]?.plain_text ?? "")
+          : "",
+      tags:
+        tagsProperty?.type === "multi_select"
+          ? tagsProperty.multi_select.map((tag) => ({
+              id: tag.id,
+              name: tag.name,
+              color: tag.color,
+            }))
+          : [],
+      description:
+        descProperty?.type === "rich_text"
+          ? (descProperty.rich_text[0]?.plain_text ?? "")
+          : "",
+      date:
+        dateProperty?.type === "created_time"
+          ? dateProperty.created_time
+          : "",
+      slug:
+        slugProperty?.type === "formula" &&
+        slugProperty.formula.type === "string"
+          ? (slugProperty.formula.string ?? "")
+          : "",
+    };
   }
 }

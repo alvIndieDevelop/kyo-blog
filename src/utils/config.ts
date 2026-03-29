@@ -5,7 +5,7 @@ const options = {
       DEFAULT_DESCRIPTION:
         "Acompañamiento emocional y psicológico personalizado para adolescentes y adultos. Psicóloga Clínica en Panamá.",
       DEFAULT_URL:
-        process.env.NEXT_PUBLIC_SITE_URL || "https://psikyo.com",
+        process.env.NEXT_PUBLIC_SITE_URL || "https://kyo-sai-blog.netlify.app",
     },
   },
   WHATSAPP: {

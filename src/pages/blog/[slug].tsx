@@ -6,7 +6,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import NotionService from "@/lib/notion";
+import { NotionService } from "@/features/blog";
+import type { Tag } from "@/features/blog";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 
@@ -60,7 +61,7 @@ export default function BlogPost({
         <header className="mb-10">
           {post.tags && post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.map((tag) => (
+              {post.tags.map((tag: Tag) => (
                 <span
                   key={tag.id}
                   className="text-[11px] font-semibold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950 px-3 py-1 rounded-full"

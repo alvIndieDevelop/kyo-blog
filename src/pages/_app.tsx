@@ -1,13 +1,14 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 import { useRouter } from "next/router";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
-import ThemeProvider from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ThemeProvider from "@/components/layout/ThemeProvider";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import options from "@/utils/config";
 
 const inter = Inter({
@@ -17,6 +18,7 @@ const inter = Inter({
 });
 
 const SITE_URL = options.APP.SEO.DEFAULT_URL;
+const GA_ID = options.GOOGLE.ANALYTICS.TRACKING_ID;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -50,6 +52,23 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      {/* Google Analytics */}
+      {GA_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}');
+            `}
+          </Script>
+        </>
+      )}
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

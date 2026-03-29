@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send, Loader2 } from "lucide-react";
 import { sendEmail } from "../lib/emailjs";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
