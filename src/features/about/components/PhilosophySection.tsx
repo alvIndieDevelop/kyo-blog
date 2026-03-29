@@ -3,10 +3,10 @@ import { Leaf, Heart, Award } from "lucide-react";
 export default function PhilosophySection() {
   return (
     <section className="mb-20">
-      <div className="bg-gradient-to-br from-teal-50 to-white dark:from-teal-950/30 dark:to-gray-950 rounded-3xl p-10 lg:p-14 border border-teal-100 dark:border-teal-900/50">
+      <div className="bg-gradient-to-br from-rosa-50 to-white dark:from-rosa-950/30 dark:to-gray-950 rounded-3xl p-10 lg:p-14 border border-rosa-100 dark:border-rosa-900/50">
         <div className="max-w-3xl mx-auto text-center">
           <div className="w-14 h-14 bg-white dark:bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
-            <Leaf className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+            <Leaf className="w-7 h-7 text-rosa-600 dark:text-rosa-400" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Mi Filosofía de Trabajo
@@ -19,7 +19,7 @@ export default function PhilosophySection() {
           </p>
           <div className="grid sm:grid-cols-3 gap-6 mt-10">
             <div className="text-center">
-              <Heart className="w-6 h-6 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
+              <Heart className="w-6 h-6 text-rosa-600 dark:text-rosa-400 mx-auto mb-3" />
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 Empatía
               </h3>
@@ -28,7 +28,7 @@ export default function PhilosophySection() {
               </p>
             </div>
             <div className="text-center">
-              <Leaf className="w-6 h-6 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
+              <Leaf className="w-6 h-6 text-rosa-600 dark:text-rosa-400 mx-auto mb-3" />
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 Crecimiento
               </h3>
@@ -37,7 +37,7 @@ export default function PhilosophySection() {
               </p>
             </div>
             <div className="text-center">
-              <Award className="w-6 h-6 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
+              <Award className="w-6 h-6 text-rosa-600 dark:text-rosa-400 mx-auto mb-3" />
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 Profesionalismo
               </h3>

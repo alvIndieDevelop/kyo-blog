@@ -11,10 +11,10 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>Acerca de | Psi. Kyo-Sai Nieves</title>
+        <title>Sobre Mí | Psi. Kyo-Sai Nieves — Psicóloga Clínica en Panamá</title>
         <meta
           name="description"
-          content="Conoce a Kyo-Sai Nieves — Psicóloga Clínica y Psicoterapeuta en Formación."
+          content="Conoce a Kyo-Sai Nieves, psicóloga clínica en Ciudad de Panamá con más de 7 años de experiencia. Enfoque psicodinámico y sistémico. Psicoterapia online y presencial."
         />
       </Head>
 
@@ -31,7 +31,7 @@ export default function About() {
           title="¿Te gustaría comenzar tu proceso?"
           description="Estoy aquí para acompañarte en cada paso. Agenda una primera sesión y juntos encontraremos el camino hacia tu bienestar."
           buttonText="Agenda tu cita"
-          buttonHref="/contact"
+          buttonHref="/agenda"
         />
       </div>
     </>

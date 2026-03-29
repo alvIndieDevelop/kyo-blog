@@ -3,11 +3,11 @@ import { MapPin, ArrowRight } from "lucide-react";
 
 export default function LocationSection() {
   return (
-    <section className="py-20 bg-gray-50/70 dark:bg-gray-900/50">
+    <section className="py-20 bg-rosa-50/40 dark:bg-rosa-950/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 tracking-widest uppercase">
+            <span className="text-xs font-semibold text-rosa-600 dark:text-rosa-400 tracking-widest uppercase">
               Ubicación
             </span>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mt-3 mb-4">
@@ -19,7 +19,7 @@ export default function LocationSection() {
               sesión.
             </p>
             <div className="flex items-start gap-3 mb-8">
-              <MapPin className="w-5 h-5 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
+              <MapPin className="w-5 h-5 text-rosa-600 dark:text-rosa-400 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="text-sm font-semibold text-gray-900 dark:text-white">
                   Consultorios Royal Center
@@ -30,8 +30,8 @@ export default function LocationSection() {
               </div>
             </div>
             <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white text-sm font-semibold rounded-full hover:bg-teal-700 transition shadow-lg shadow-teal-600/25"
+              href="/agenda"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-rosa-600 text-white text-sm font-semibold rounded-full hover:bg-rosa-700 transition shadow-lg shadow-rosa-600/25"
             >
               Agenda tu cita
               <ArrowRight className="w-4 h-4" />

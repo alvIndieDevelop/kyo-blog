@@ -16,7 +16,7 @@ export default function TimelineCard({
       <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
         {title}
       </h3>
-      <p className="text-xs text-teal-600 dark:text-teal-400 font-medium mb-2">
+      <p className="text-xs text-rosa-600 dark:text-rosa-400 font-medium mb-2">
         {subtitle}
       </p>
       {detail && (
@@ -29,7 +29,7 @@ export default function TimelineCard({
               key={i}
               className="text-sm text-gray-500 dark:text-gray-400 flex items-start gap-2"
             >
-              <span className="text-teal-500 mt-0.5">•</span>
+              <span className="text-rosa-500 mt-0.5">•</span>
               {b}
             </li>
           ))}

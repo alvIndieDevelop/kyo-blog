@@ -4,7 +4,7 @@ import { testimonials } from "../data/home-content";
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-20 bg-gray-50/70 dark:bg-gray-900/50">
+    <section className="py-20 bg-rosa-50/40 dark:bg-rosa-950/10">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           label="Testimonios"
@@ -16,13 +16,13 @@ export default function TestimonialsSection() {
               key={i}
               className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-100 dark:border-gray-800"
             >
-              <Quote className="w-8 h-8 text-teal-200 dark:text-teal-900 mb-4" />
+              <Quote className="w-8 h-8 text-rosa-200 dark:text-rosa-900 mb-4" />
               <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                 &ldquo;{testimonial.text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-teal-50 dark:bg-teal-950 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-teal-600 dark:text-teal-400">
+                <div className="w-9 h-9 bg-rosa-50 dark:bg-rosa-950 rounded-full flex items-center justify-center">
+                  <span className="text-xs font-bold text-rosa-600 dark:text-rosa-400">
                     {testimonial.author}
                   </span>
                 </div>

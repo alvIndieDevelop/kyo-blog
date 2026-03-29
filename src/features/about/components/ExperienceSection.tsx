@@ -4,7 +4,7 @@ import { experience } from "../data/about-content";
 export default function ExperienceSection() {
   return (
     <section>
-      <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 tracking-widest uppercase">
+      <span className="text-xs font-semibold text-rosa-600 dark:text-rosa-400 tracking-widest uppercase">
         Trayectoria
       </span>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-3 mb-8">

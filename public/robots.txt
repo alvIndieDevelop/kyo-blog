@@ -4,7 +4,7 @@ Allow: /
 Disallow: /api/
 
 # Host
-Host: https://psikyo.com
+Host: https://kyo-sai-blog.netlify.app
 
 # Sitemaps
-Sitemap: https://psikyo.com/sitemap.xml
+Sitemap: https://kyo-sai-blog.netlify.app/sitemap.xml

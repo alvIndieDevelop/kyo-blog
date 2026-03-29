@@ -72,7 +72,7 @@ export default function ContactForm() {
           type="text"
           id="name"
           {...register("name")}
-          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-400 dark:focus:border-teal-600 transition"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-rosa-500/20 focus:border-rosa-400 dark:focus:border-rosa-600 transition"
           placeholder="Tu nombre"
         />
         {errors.name && (
@@ -91,7 +91,7 @@ export default function ContactForm() {
           type="email"
           id="email"
           {...register("email")}
-          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-400 dark:focus:border-teal-600 transition"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-rosa-500/20 focus:border-rosa-400 dark:focus:border-rosa-600 transition"
           placeholder="tu.correo@ejemplo.com"
         />
         {errors.email && (
@@ -110,7 +110,7 @@ export default function ContactForm() {
           id="message"
           rows={5}
           {...register("message")}
-          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-400 dark:focus:border-teal-600 transition resize-none"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-rosa-500/20 focus:border-rosa-400 dark:focus:border-rosa-600 transition resize-none"
           placeholder="¿En qué puedo ayudarte?"
         />
         {errors.message && (
@@ -123,7 +123,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center px-8 py-3.5 bg-teal-600 text-white text-sm font-semibold rounded-full hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-lg shadow-teal-600/25"
+        className="w-full inline-flex items-center justify-center px-8 py-3.5 bg-rosa-600 text-white text-sm font-semibold rounded-full hover:bg-rosa-700 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-lg shadow-rosa-600/25"
       >
         {isSubmitting ? (
           <>

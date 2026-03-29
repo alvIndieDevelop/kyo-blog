@@ -13,8 +13,8 @@ export default function WhyChooseSection() {
         <div className="grid md:grid-cols-3 gap-8">
           {whyChooseMe.map((item) => (
             <div key={item.title} className="text-center">
-              <div className="w-14 h-14 bg-teal-50 dark:bg-teal-950 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <item.icon className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+              <div className="w-14 h-14 bg-rosa-50 dark:bg-rosa-950 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                <item.icon className="w-7 h-7 text-rosa-600 dark:text-rosa-400" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {item.title}

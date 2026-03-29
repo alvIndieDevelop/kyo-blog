@@ -9,20 +9,20 @@ const WHATSAPP_MESSAGE = encodeURIComponent(
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 text-gray-400 py-16">
+    <footer className="bg-stone-900 dark:bg-stone-950 text-stone-400 py-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-rosa-600 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">KN</span>
               </div>
               <div>
                 <span className="font-semibold text-white text-sm">
                   Kyo-Sai Nieves
                 </span>
-                <span className="block text-xs text-gray-500">
+                <span className="block text-xs text-stone-500">
                   Psicóloga Clínica
                 </span>
               </div>
@@ -39,18 +39,18 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 bg-gray-800 hover:bg-teal-600 rounded-full flex items-center justify-center transition"
+                className="w-9 h-9 bg-stone-800 hover:bg-rosa-600 rounded-full flex items-center justify-center transition"
               >
-                <Instagram className="w-4 h-4 text-gray-300" />
+                <Instagram className="w-4 h-4 text-stone-300" />
               </a>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="w-9 h-9 bg-gray-800 hover:bg-[#25D366] rounded-full flex items-center justify-center transition"
+                className="w-9 h-9 bg-stone-800 hover:bg-[#25D366] rounded-full flex items-center justify-center transition"
               >
-                <MessageCircle className="w-4 h-4 text-gray-300" />
+                <MessageCircle className="w-4 h-4 text-stone-300" />
               </a>
             </div>
           </div>
@@ -62,26 +62,39 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/" className="hover:text-teal-400 transition">
+                <Link href="/" className="hover:text-rosa-400 transition">
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-teal-400 transition">
-                  Acerca de
+                <Link href="/servicios" className="hover:text-rosa-400 transition">
+                  Servicios
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-teal-400 transition">
+                <Link href="/sobre-mi" className="hover:text-rosa-400 transition">
+                  Sobre Mí
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-rosa-400 transition">
                   Blog
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/contact"
-                  className="hover:text-teal-400 transition"
+                  href="/recursos"
+                  className="hover:text-rosa-400 transition"
                 >
-                  Contacto
+                  Recursos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/agenda"
+                  className="hover:text-rosa-400 transition"
+                >
+                  Agendar cita
                 </Link>
               </li>
             </ul>
@@ -94,7 +107,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:psi.kyosainieves@gmail.com"
-                  className="hover:text-teal-400 transition"
+                  className="hover:text-rosa-400 transition"
                 >
                   psi.kyosainieves@gmail.com
                 </a>
@@ -102,7 +115,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+50764333779"
-                  className="hover:text-teal-400 transition"
+                  className="hover:text-rosa-400 transition"
                 >
                   (+507) 6433-3779
                 </a>
@@ -116,7 +129,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-600">
+        <div className="border-t border-stone-800 mt-12 pt-8 text-center text-xs text-stone-600">
           © {new Date().getFullYear()} Kyo-Sai Nieves. Todos los derechos
           reservados.
         </div>

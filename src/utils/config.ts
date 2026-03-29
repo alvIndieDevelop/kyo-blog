@@ -13,6 +13,9 @@ const options = {
     DEFAULT_MESSAGE:
       "Hola, me gustaría agendar una cita con Psi. Kyo-Sai Nieves.",
   },
+  CALENDLY: {
+    URL: process.env.NEXT_PUBLIC_CALENDLY_URL || "",
+  },
   NOTION: {
     ACCESS_TOKEN: process.env.NOTION_ACCESS_TOKEN,
     BLOG_DATABASE_ID: process.env.NOTION_BLOG_DATABASE_ID,

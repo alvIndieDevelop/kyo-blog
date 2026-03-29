@@ -21,6 +21,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/sobre-mi",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/agenda",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

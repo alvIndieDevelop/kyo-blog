@@ -23,12 +23,12 @@ export default function BlogCard({ post }: BlogCardProps) {
             />
           </div>
         ) : (
-          <div className="h-48 bg-gradient-to-br from-teal-100 to-teal-50 dark:from-teal-900 dark:to-teal-950" />
+          <div className="h-48 bg-gradient-to-br from-rosa-100 to-rosa-50 dark:from-rosa-900 dark:to-rosa-950" />
         )}
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
             {tags && tags.length > 0 && (
-              <span className="text-[11px] font-semibold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950 px-2.5 py-1 rounded-full">
+              <span className="text-[11px] font-semibold text-rosa-600 dark:text-rosa-400 bg-rosa-50 dark:bg-rosa-950 px-2.5 py-1 rounded-full">
                 {tags[0].name}
               </span>
             )}
@@ -41,13 +41,13 @@ export default function BlogCard({ post }: BlogCardProps) {
               })}
             </span>
           </div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition leading-snug">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-rosa-600 dark:group-hover:text-rosa-400 transition leading-snug">
             {title}
           </h3>
           <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2 mb-4">
             {description}
           </p>
-          <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 group-hover:underline">
+          <span className="text-xs font-semibold text-rosa-600 dark:text-rosa-400 group-hover:underline">
             Leer más →
           </span>
         </div>

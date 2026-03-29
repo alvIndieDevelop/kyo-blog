@@ -5,7 +5,7 @@ export default function AboutHero() {
   return (
     <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
       <div>
-        <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 tracking-widest uppercase">
+        <span className="text-xs font-semibold text-rosa-600 dark:text-rosa-400 tracking-widest uppercase">
           Acerca de
         </span>
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-3 mb-6">
@@ -28,8 +28,8 @@ export default function AboutHero() {
 
         {/* Credentials */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="bg-teal-50 dark:bg-teal-950 rounded-2xl p-5 text-center">
-            <Award className="w-6 h-6 text-teal-600 dark:text-teal-400 mx-auto mb-2" />
+          <div className="bg-rosa-50 dark:bg-rosa-950 rounded-2xl p-5 text-center">
+            <Award className="w-6 h-6 text-rosa-600 dark:text-rosa-400 mx-auto mb-2" />
             <p className="text-xs font-semibold text-gray-900 dark:text-white">
               Psicóloga Clínica
             </p>
@@ -37,8 +37,8 @@ export default function AboutHero() {
               Licenciada
             </p>
           </div>
-          <div className="bg-teal-50 dark:bg-teal-950 rounded-2xl p-5 text-center">
-            <BookOpen className="w-6 h-6 text-teal-600 dark:text-teal-400 mx-auto mb-2" />
+          <div className="bg-rosa-50 dark:bg-rosa-950 rounded-2xl p-5 text-center">
+            <BookOpen className="w-6 h-6 text-rosa-600 dark:text-rosa-400 mx-auto mb-2" />
             <p className="text-xs font-semibold text-gray-900 dark:text-white">
               Psicoterapia Integrativa
             </p>
@@ -46,8 +46,8 @@ export default function AboutHero() {
               Especialista
             </p>
           </div>
-          <div className="bg-teal-50 dark:bg-teal-950 rounded-2xl p-5 text-center">
-            <Users className="w-6 h-6 text-teal-600 dark:text-teal-400 mx-auto mb-2" />
+          <div className="bg-rosa-50 dark:bg-rosa-950 rounded-2xl p-5 text-center">
+            <Users className="w-6 h-6 text-rosa-600 dark:text-rosa-400 mx-auto mb-2" />
             <p className="text-xs font-semibold text-gray-900 dark:text-white">
               Programas Juveniles
             </p>
@@ -59,7 +59,7 @@ export default function AboutHero() {
       </div>
 
       <div className="relative">
-        <div className="rounded-3xl overflow-hidden shadow-2xl shadow-teal-900/10 dark:shadow-black/30 max-h-[420px] lg:max-h-none lg:aspect-[3/4] relative">
+        <div className="rounded-3xl overflow-hidden shadow-2xl shadow-rosa-900/10 dark:shadow-black/30 max-h-[420px] lg:max-h-none lg:aspect-[3/4] relative">
           <Image
             src="/images/KyoSaiNieves.jpg"
             alt="Psi. Kyo-Sai Nieves"

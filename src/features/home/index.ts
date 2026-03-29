@@ -1,6 +1,9 @@
 export { default as HeroSection } from "./components/HeroSection";
+export { default as EmotionalBlock } from "./components/EmotionalBlock";
+export { default as AboutSummary } from "./components/AboutSummary";
+export { default as ProblemsSection } from "./components/ProblemsSection";
+export { default as ApproachSection } from "./components/ApproachSection";
 export { default as ServicesSection } from "./components/ServicesSection";
-export { default as WhyChooseSection } from "./components/WhyChooseSection";
 export { default as TestimonialsSection } from "./components/TestimonialsSection";
 export { default as FeaturedPostsSection } from "./components/FeaturedPostsSection";
 export { default as LocationSection } from "./components/LocationSection";

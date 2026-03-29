@@ -33,8 +33,8 @@ export default function ContactInfo() {
           key={item.label}
           className="flex items-start gap-4 bg-gray-50 dark:bg-gray-900 rounded-2xl p-5 border border-gray-100 dark:border-gray-800"
         >
-          <div className="w-10 h-10 bg-teal-50 dark:bg-teal-950 rounded-xl flex items-center justify-center flex-shrink-0">
-            <item.icon className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+          <div className="w-10 h-10 bg-rosa-50 dark:bg-rosa-950 rounded-xl flex items-center justify-center flex-shrink-0">
+            <item.icon className="w-5 h-5 text-rosa-600 dark:text-rosa-400" />
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
@@ -43,7 +43,7 @@ export default function ContactInfo() {
             {item.href ? (
               <a
                 href={item.href}
-                className="text-sm text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition"
+                className="text-sm text-gray-500 dark:text-gray-400 hover:text-rosa-600 dark:hover:text-rosa-400 transition"
               >
                 {item.content}
               </a>

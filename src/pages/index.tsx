@@ -2,8 +2,11 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import {
   HeroSection,
+  EmotionalBlock,
+  AboutSummary,
+  ProblemsSection,
+  ApproachSection,
   ServicesSection,
-  WhyChooseSection,
   TestimonialsSection,
   FeaturedPostsSection,
   LocationSection,
@@ -11,6 +14,7 @@ import {
 import { NotionService } from "@/features/blog";
 import type { BlogPost } from "@/features/blog";
 import CTASection from "@/components/shared/CTASection";
+import FadeInSection from "@/components/ui/FadeInSection";
 
 interface HomeProps {
   featuredPosts: BlogPost[];
@@ -40,22 +44,49 @@ export default function Home({ featuredPosts }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Psi. Kyo-Sai Nieves | Psicóloga Clínica en Panamá</title>
+        <title>
+          Psi. Kyo-Sai Nieves | Psicóloga Clínica en Ciudad de Panamá
+        </title>
+        <meta
+          name="description"
+          content="Psicóloga clínica en Ciudad de Panamá. Psicoterapia online y presencial para adolescentes y adultos. Terapia de ansiedad, autoestima, relaciones y bienestar emocional."
+        />
       </Head>
 
       <div>
         <HeroSection />
-        <ServicesSection />
-        <WhyChooseSection />
-        <TestimonialsSection />
-        <FeaturedPostsSection posts={featuredPosts} />
-        <LocationSection />
-        <CTASection
-          title="¿Listo para dar el primer paso?"
-          description="El bienestar emocional comienza con una conversación. Agenda tu primera sesión hoy."
-          buttonText="Agenda tu cita ahora →"
-          buttonHref="/contact"
-        />
+        <FadeInSection>
+          <EmotionalBlock />
+        </FadeInSection>
+        <FadeInSection>
+          <AboutSummary />
+        </FadeInSection>
+        <FadeInSection>
+          <ProblemsSection />
+        </FadeInSection>
+        <FadeInSection>
+          <ApproachSection />
+        </FadeInSection>
+        <FadeInSection>
+          <ServicesSection />
+        </FadeInSection>
+        <FadeInSection>
+          <TestimonialsSection />
+        </FadeInSection>
+        <FadeInSection>
+          <FeaturedPostsSection posts={featuredPosts} />
+        </FadeInSection>
+        <FadeInSection>
+          <LocationSection />
+        </FadeInSection>
+        <FadeInSection>
+          <CTASection
+            title="¿Lista para dar el primer paso?"
+            description="El bienestar emocional comienza con una conversación. Agenda tu primera sesión hoy."
+            buttonText="Agenda tu sesión ahora →"
+            buttonHref="/agenda"
+          />
+        </FadeInSection>
       </div>
     </>
   );
